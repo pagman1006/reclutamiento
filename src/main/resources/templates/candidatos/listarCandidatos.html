@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head" />
+<body class="">
+	<div class="row">
+		<div class="col">
+			<header th:replace="layout/layout :: header"></header>
+		</div>
+	</div>
+	
+	<div class="container-fluid my-3">
+		<div class="row">
+			<div class="col">
+				<ul th:if="${success}"  class="alert alert-success">
+					<li>El candidato se eliminó correctamente!</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col">
+			
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-header text-center">
+						<h2>Listar Candidatos</h2>
+					</div>
+					<div class="card-body">
+						<table class="table table-striped table-bordered table-hover table-sm">
+							<thead>
+								<tr>
+									<th class="text-center">Id</th>
+									<th>Nombres</th>
+									<th>Apellidos</th>
+									<th>Email</th>
+									<th>Fecha Nacimiento</th>
+									<th>Teléfono de casa</th>
+									<th>Celular</th>
+									<th>Eliminar</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="candidato: ${candidatos}">
+									<td class="text-center align-middle"><button class="btn btn-sm btn-primary" th:text="${candidato.id}"></button></td>
+									<td class="align-middle" 
+										th:text="${candidato.segundoNombre !=null} ? ${candidato.primerNombre} + ' ' 
+											+ ${candidato.segundoNombre} : ${candidato.primerNombre}"></td>
+									<td class="align-middle" 
+										th:text="${candidato.apellidoMaterno !=null} ? ${candidato.apellidoPaterno} + ' ' 
+											+ ${candidato.apellidoMaterno} : ${candidato.apellidoPaterno}"></td>
+									<td class="align-middle" th:text="${candidato.correosElectronicos[0].correo}"></td>
+									<td class="align-middle" th:text="${candidato.fechaNacimiento}"></td>
+									<td class="align-middle" th:text="${candidato.numeroCasa}"></td>
+									<td class="align-middle" th:text="${candidato.numeroCelular}"></td>
+									<td class="text-center align-middle">
+										<a th:href="@{eliminar/} + ${candidato.id}" class="btn btn-sm btn-danger">X</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="card-footer justify-align-center">
+						<nav th:replace="layout/paginador-nav :: paginador"></nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		console.log("listo");
+	})
+	
+	function regresar(){
+		window.location.href="/";
+	}
+</script>
+</html>

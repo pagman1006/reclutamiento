@@ -1,0 +1,11 @@
+body {
+	background-color: #EFF8FB;
+}
+
+input[type="date"]::before{
+   color: #ffffff;
+   content: attr(placeholder) ": ";
+}
+input[type="date"]:focus::before {
+   content: "" !important;
+}

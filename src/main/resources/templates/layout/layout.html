@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title th:text="'INAD - ' + ${titulo}"></title>
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+<link th:href="@{/css/fontawesome/all.css}" rel="stylesheet" />
+<link th:href="@{/css/login.css}" rel="stylesheet"/>
+</head>
+<body class="">
+	<header th:fragment="header">
+		<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+			<a class="navbar-brand" th:href="@{/}">
+				INAD
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-end" 
+				id="navbarNavDropdown">
+				<ul sec:authorize="!isAuthenticated()" class="navbar-nav mx-auto mr-auto">
+					<li class="nav-item dropdown active">
+						<a class="btn btn-outline-light btn-sm" th:href="@{/solicitud/inicio}"> Solicitud </a>
+					</li>
+				</ul>
+				<ul sec:authorize="isAuthenticated()" class="navbar-nav mx-auto mr-auto">
+					<li class="nav-item dropdown active">
+						<a class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false">Candidatos</a>
+						<div class="dropdown-menu bg-primary"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item text-light" th:href="@{/candidato/buscar-candidato}">Buscar Candidatos</a>
+							<a class="dropdown-item text-light" th:href="@{/candidato/nuevo-candidato}">Nuevo Candidato</a>
+							<a class="dropdown-item text-light" th:href="@{/candidato/listar-candidatos}">Listar Candidatos</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown active">
+						<a class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> Assessment </a>
+						<div class="dropdown-menu bg-primary"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item text-light" href="#">Buscar Assessment</a>
+							<a class="dropdown-item text-light" href="#">Crear Assessment</a>
+							<a class="dropdown-item text-light" href="#">Listar Assessment</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown active">
+						<a class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> Entrevista </a>
+						<div class="dropdown-menu bg-primary"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item text-light" href="#">Buscar Entrevista</a>
+							<a class="dropdown-item text-light" href="#">Nueva Entrevista</a>
+							<a class="dropdown-item text-light" href="#">Listar Entrevistas</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown active">
+						<a class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> Psicometría </a>
+						<div class="dropdown-menu bg-primary"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item text-light" href="#">Buscar Evaluación</a>
+							<a class="dropdown-item text-light" href="#">Nueva Evaluación</a>
+							<a class="dropdown-item text-light" href="#">Listar Evaluaciones</a>
+						</div>
+					</li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item dropdown active">
+						<a class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> Usuarios </a>
+						<div class="dropdown-menu bg-primary"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item text-light" href="#">Buscar Usuario</a>
+							<a class="dropdown-item text-light" href="#">Nueva Usurio</a>
+							<a class="dropdown-item text-light" href="#">Listar Usuarios</a>
+						</div>
+					</li>
+				</ul>
+				<div class="float float-rigth">
+					<a sec:authorize="isAuthenticated()" class="btn btn-danger btn-sm" th:href="@{/login?logout}"> Cerrar Sesión </a>
+					<a sec:authorize="!isAuthenticated()" class="btn btn-success btn-sm" th:href="@{/login}"> Iniciar Sesión </a>
+				</div>
+			</div>
+		</nav>
+		<div class="alert alert-success" th:if="${success != null}"
+			th:text="${success}"></div>
+		<div class="alert alert-danger" th:if="${error != null}"
+			th:text="${error}"></div>
+		<div class="alert alert-warning" th:if="${warning != null}"
+			th:text="${warning}"></div>
+		<div class="alert alert-info" th:if="${info != null}"
+			th:text="${info}"></div>
+	</header>
+	<footer th:fragment="footer">
+		<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+		<script th:src="@{/js/jquery-ui.js}"></script>
+		<script th:src="@{/js/bootstrap.js}"></script>
+		<script th:src="@{/js/popper.min.js}"></script>
+	</footer>
+</body>
+</html>
