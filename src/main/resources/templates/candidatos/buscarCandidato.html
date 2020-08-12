@@ -4,57 +4,56 @@
 <body class="">
 	<header th:replace="layout/layout :: header"></header>
 	<div class="container-fluid my-3">
-	<div class="card">
-		<div class="card-header text-center">
-			<h2>Buscar Candidato</h2>
-		</div>
-		<div class="card-body">
-		
-			<form id="buscarCandidato" class="my-4" th:object="${candidato}" th:action="@{buscar}" method="post">
+		<div class="card">
+			<div class="card-header text-center">
+				<h2>Buscar Candidato</h2>
+			</div>
+			<div class="card-body">
 			
-				<div class="form-group row ">
-					<label class="col-md-2 col-sm-5 col-form-label text-right">Nombre: </label>
-					<div class="col-md-3 col-sm-5 px-1 mx-1 my-2">
-						<input class="form-control" type="text" name="primerNombre" th:field="*{primerNombre}"/>
-					</div>
-					<label class="col-md-2 col-sm-5 col-form-label text-right">Segundo Nombre: </label>
-					<div class="col-md-3 col-sm-5  px-1 mx-1 my-2">
-						<input class="form-control" type="text" name="segundoNombre" th:field="*{segundoNombre}"/>
-					</div>
-				</div>
-				<div class="form-group row ">
-					<label class="col-md-2 col-sm-5 col-form-label text-right">Apellido Paterno: </label>
-					<div class="col-md-3 col-sm-5  px-1 mx-1 my-2">
-						<input class="form-control" type="text" name="apellidoPaterno" th:field="*{apellidoPaterno}"/>
-					</div>
-					<label class="col-md-2 col-sm-5 col-form-label text-right">Apellido Materno: </label>
-					<div class="col-md-3 col-sm-5  px-1 mx-1 my-2">
-						<input class="form-control" type="text" name="apellidoMaterno" th:field="*{apellidoMaterno}"/>
-					</div>
-				</div>
-				<div class="form-group row ">
-					<label class="col-md-2 col-sm-5 col-form-label text-right">Email: </label>
-					<div class="col-md-3 col-sm-5  px-1 mx-1 my-2">
-						<input class="form-control" type="email" name="email" th:field="*{correosElectronicos[0].correo}"/>
-					</div>
-					<label class="col-md-2 col-sm-5 col-form-label text-right">Fecha Nacimiento: </label>
-					<div class="col-md-3 col-sm-5  px-1 mx-1 my-2">
-						<input class="form-control" type="date" name="dayOfBirdth" th:field="*{fechaNacimiento}"/>
-					</div>
-				</div>
-				<div class="form-group row ">
-					<label class="col-md-2 col-sm-5 col-form-label text-right">Teléfono de Casa: </label>
-					<div class="col-md-3 col-sm-5  px-1 mx-1 my-2">
-						<input class="form-control" type="text" name="homeNumber" th:field="*{numeroCasa}"/>
-					</div>
-					<label class="col-md-2 col-sm-5 col-form-label text-right">Teléfono Celular: </label>
-					<div class="col-md-3 col-sm-5  px-1 mx-1 my-2">
-						<input class="form-control" type="text" name="cellNumber" th:field="*{numeroCelular}"/>
-					</div>
-				</div>
-			</form>
-		</div>				
+				<form id="buscarCandidato" class="my-4" th:object="${candidato}" th:action="@{buscar}" method="post">
 			
+					<div class="form-group row ">
+						<label class="col-md-2 col-sm-5 col-form-label text-right">Nombre: </label>
+						<div class="col-md-3 col-sm-5 px-1 mx-1 my-2">
+							<input class="form-control" type="text" name="primerNombre" th:field="*{primerNombre}"/>
+						</div>
+						<label class="col-md-2 col-sm-5 col-form-label text-right">Segundo Nombre: </label>
+						<div class="col-md-3 col-sm-5  px-1 mx-1 my-2">
+							<input class="form-control" type="text" name="segundoNombre" th:field="*{segundoNombre}"/>
+						</div>
+					</div>
+					<div class="form-group row ">
+						<label class="col-md-2 col-sm-5 col-form-label text-right">Apellido Paterno: </label>
+						<div class="col-md-3 col-sm-5  px-1 mx-1 my-2">
+							<input class="form-control" type="text" name="apellidoPaterno" th:field="*{apellidoPaterno}"/>
+						</div>
+						<label class="col-md-2 col-sm-5 col-form-label text-right">Apellido Materno: </label>
+						<div class="col-md-3 col-sm-5  px-1 mx-1 my-2">
+							<input class="form-control" type="text" name="apellidoMaterno" th:field="*{apellidoMaterno}"/>
+						</div>
+					</div>
+					<div class="form-group row ">
+						<label class="col-md-2 col-sm-5 col-form-label text-right">Email: </label>
+						<div class="col-md-3 col-sm-5  px-1 mx-1 my-2">
+							<input class="form-control" type="email" name="email" th:field="*{correosElectronicos[0].correo}"/>
+						</div>
+						<label class="col-md-2 col-sm-5 col-form-label text-right">Fecha Nacimiento: </label>
+						<div class="col-md-3 col-sm-5  px-1 mx-1 my-2">
+							<input class="form-control" type="date" name="dayOfBirdth" th:field="*{fechaNacimiento}"/>
+						</div>
+					</div>
+					<div class="form-group row ">
+						<label class="col-md-2 col-sm-5 col-form-label text-right">Teléfono de Casa: </label>
+						<div class="col-md-3 col-sm-5  px-1 mx-1 my-2">
+							<input class="form-control" type="text" name="homeNumber" th:field="*{numeroCasa}"/>
+						</div>
+						<label class="col-md-2 col-sm-5 col-form-label text-right">Teléfono Celular: </label>
+						<div class="col-md-3 col-sm-5  px-1 mx-1 my-2">
+							<input class="form-control" type="text" name="cellNumber" th:field="*{numeroCelular}"/>
+						</div>
+					</div>
+				</form>
+			</div>				
 		</div>
 		<div class="card-footer">
 			<div class="justify-content-center text-center">

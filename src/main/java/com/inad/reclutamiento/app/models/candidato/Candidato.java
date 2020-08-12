@@ -20,6 +20,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -29,7 +30,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  *
  */
 @Entity
-@Table(name = "candidatos")
+@Table(name = "candidatos", uniqueConstraints = {@UniqueConstraint(columnNames = {"id_rfc", "id_candidato"})} )
 public class Candidato implements Serializable {
 
 	/**

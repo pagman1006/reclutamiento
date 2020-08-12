@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.inad.reclutamiento.app.controllers;
+package com.inad.reclutamiento.app.controllers.proceso;
 
 import javax.servlet.http.HttpServletRequest;
 
