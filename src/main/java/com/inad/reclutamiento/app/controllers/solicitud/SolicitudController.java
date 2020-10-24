@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.inad.reclutamiento.app.api.service.CandidatoService;
 import com.inad.reclutamiento.app.api.service.RfcService;
 import com.inad.reclutamiento.app.models.candidato.Candidato;
 import com.inad.reclutamiento.app.models.candidato.Rfc;
@@ -32,8 +31,8 @@ public class SolicitudController {
 
 	protected static final Logger logger = LoggerFactory.getLogger(SolicitudController.class);
 	
-	@Autowired
-	private CandidatoService candidatoService;
+//	@Autowired
+//	private CandidatoService candidatoService;
 	
 	@Autowired
 	private RfcService rfcService;
@@ -54,9 +53,9 @@ public class SolicitudController {
 		
 		Rfc nuevoRfc = new Rfc();
 		
-		logger.info("Metodo post de buscar rfc");
-		logger.info("RFC: "  + rfc.getClave());
-		logger.info("Homo Clave: " + rfc.getHomoclave());
+		logger.debug("Metodo post de buscar rfc");
+		logger.debug("RFC: "  + rfc.getClave());
+		logger.debug("Homo Clave: " + rfc.getHomoclave());
 		
 		List<Rfc> listaRfc = rfcService.findAll();
 		
@@ -64,14 +63,14 @@ public class SolicitudController {
 			for ( Rfc r : listaRfc ) {
 				if ( rfc.getClave().equals( r.getClave() ) ) {
 					nuevoRfc = rfc;
-					logger.info("Se encontró rfc");
+					logger.debug("Se encontró rfc");
 				}
 			}
 		}
 		
 		if ( nuevoRfc.getClave() == null || nuevoRfc.getClave().isEmpty() ) {
 			rfcService.saveRfc(rfc);
-			logger.info("Se guarda rfc");
+			logger.debug("Se guarda rfc");
 		}
 		
 		Candidato candidato = new Candidato();

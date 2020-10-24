@@ -3,6 +3,8 @@
  */
 package com.inad.reclutamiento.app.controllers;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -23,9 +25,16 @@ public class InicioController {
 	protected static final Logger logger = LoggerFactory.getLogger(InicioController.class);
 	
 	@GetMapping(value = {"/", "/index.html"})
-	public String inicio(HttpServletRequest request, Model model) {
+	public String inicio(HttpServletRequest request, Model model, Principal principal) {
 		model.addAttribute("titulo", "Inicio");
-		logger.info("Inicio");
+		
+		if ( principal != null ) {
+			logger.debug("Usuario Logueado");
+		} else {
+			logger.debug("Usuario No Logueado");
+		}
+		
+		logger.debug("Inicio");
 		return "inicio";
 	}
 }

@@ -5,3 +5,4 @@ mvnw.cmd
 /.settings
 /target
 /src/main/resources/import.sql
+/src/main/resources/application.properties

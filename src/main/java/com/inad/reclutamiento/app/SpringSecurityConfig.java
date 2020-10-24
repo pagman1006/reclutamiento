@@ -3,12 +3,16 @@
  */
 package com.inad.reclutamiento.app;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -23,7 +27,7 @@ import com.inad.reclutamiento.app.auth.handler.LoginSuccesHandler;
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	
-//	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
 	private LoginSuccesHandler successHandler;
@@ -52,7 +56,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected UserDetailsService userDetailsService() {
 		// Codigo para crear usuarios y contraseñas
-		/*
+		
 		logger.info("Inicio de creacion de usuarios");
 		
 		// User Role
@@ -68,7 +72,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		logger.info("Admin: " + theAdmin.getUsername());
 		logger.info("Pass Admin: (admin) " + theAdmin.getPassword());
-		*/
+		
 		return super.userDetailsService();
 	}
 

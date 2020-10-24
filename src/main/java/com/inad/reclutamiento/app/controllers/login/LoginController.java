@@ -39,7 +39,7 @@ public class LoginController {
 			logger.info("logout");
 			model.addAttribute("success", "Ha cerrado sesión con éxito!");
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	       if (auth != null){
+	       if (auth != null) {
 	           new SecurityContextLogoutHandler().logout(request, response, auth);
 	       }
 	       return "redirect:/";	       
