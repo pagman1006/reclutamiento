@@ -27,13 +27,6 @@ public class InicioController {
 	@GetMapping(value = {"/", "/index.html"})
 	public String inicio(HttpServletRequest request, Model model, Principal principal) {
 		model.addAttribute("titulo", "Inicio");
-		
-		if ( principal != null ) {
-			logger.debug("Usuario Logueado");
-		} else {
-			logger.debug("Usuario No Logueado");
-		}
-		
 		logger.debug("Inicio");
 		return "inicio";
 	}
